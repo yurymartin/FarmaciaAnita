@@ -5,4 +5,4 @@
 <h5 align="center"><b>DASHBOARD DEL SISTMEA</b></h5>
 <p align="center"><img src="https://github.com/martin1030/FarmaciaAnita/blob/master/public/img/imagen2.jpg" width="800"></p>
 <h5 align="center"><b>INTERFAZ DE VENTA DE PRODUCTOS</b></h5>
-<p align="center"><img src="https://github.com/martin1030/FarmaciaAnita/blob/master/public/img/imagen2.jpg" width="800"></p>
+<p align="center"><img src="https://github.com/martin1030/FarmaciaAnita/blob/master/public/img/imagen3.jpg" width="800"></p>
