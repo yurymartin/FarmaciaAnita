@@ -1,0 +1,20 @@
+=========================================================================================================
+DELIMITER //
+CREATE TRIGGER tr_updStockIngreso AFTER INSERT ON detalle_ventas
+FOR EACH ROW BEGIN
+	UPDATE productos SET stock = stock + NEW.cantidad
+    WHERE productos.id = NEW.producto_id;
+END
+//
+DELIMITER ;
+
+=========================================================================================================
+DELIMITER //
+CREATE TRIGGER tr_updStockVenta AFTER INSERT ON detalle_ventas
+ FOR EACH ROW BEGIN
+ UPDATE productos SET stock = stock - NEW.cantidad 
+ WHERE productos.id = NEW.producto_id;
+END
+//
+DELIMITER ;
+=========================================================================================================
