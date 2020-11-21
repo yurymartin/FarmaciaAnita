@@ -14,6 +14,7 @@ use App\Persona;
 use App\Producto;
 use App\Tipo_Comprobante;
 use App\Venta;
+use Barryvdh\Debugbar\Facade as Debugbar;
 use Illuminate\Http\Request;
 use DB;
 use Brian2694\Toastr\Facades\Toastr;
@@ -32,7 +33,7 @@ class VentaController extends Controller
      */
     public function index()
     {
-        $ventas = Venta::borrado()->orderBy('id','desc')->get();
+        $ventas = Venta::borrado()->orderBy('id', 'desc')->get();
         $pagos = Pago::borrado()->where('activo', '1')->get();
         $clientes = Cliente::borrado()->where('activo', '1')->get();
         $tipo_comprobantes = Tipo_Comprobante::borrado()->where('activo', '1')->get();
@@ -80,15 +81,24 @@ class VentaController extends Controller
     public function store(VentaFormRequest $request)
     {
         try {
+            $num_comprobante = '';
             if (request('tipo_comprobante_id') == '1') {
                 $ultima_venta = Venta::where('tipo_comprobante_id', 'LIKE', '%1%')->orderBy('id', 'DESC')->first();
             } else if (request('tipo_comprobante_id') == '2') {
                 $ultima_venta = Venta::where('tipo_comprobante_id', 'LIKE', '%2%')->orderBy('id', 'DESC')->first();
             }
-            $ult_id = (int) $ultima_venta->num_comprobante;
-            $serie_comprobante = $ultima_venta->serie_comprobante;
-            $num_comprobante = '';
-            if ($ult_id > 0 && $ult_id < 10) {
+            if ($ultima_venta) {
+                $ult_id = (int) $ultima_venta->num_comprobante;
+                $serie_comprobante = $ultima_venta->serie_comprobante;
+            } else {
+                $ult_id = 0;
+                if (request('tipo_comprobante_id') == '1') {
+                    $serie_comprobante = 'B-001';
+                } else if (request('tipo_comprobante_id') == '2') {
+                    $serie_comprobante = 'F-001';
+                }
+            }
+            if ($ult_id >= 0 && $ult_id < 10) {
                 $ult_id = $ult_id + 1;
                 $num_comprobante = '000000000' . $ult_id;
             } else if ($ult_id >= 10 && $ult_id < 100) {
@@ -126,6 +136,8 @@ class VentaController extends Controller
                 }
                 $num_comprobante = '00000000001';
             }
+
+
             DB::beginTransaction();
             $venta = new Venta;
             $venta->serie_comprobante = $serie_comprobante;
@@ -158,12 +170,13 @@ class VentaController extends Controller
                 $cont = $cont + 1;
             }
             DB::commit();
-        } catch (\Exception $e) {
+            Toastr::success('LA VENTA FUE REGISTRADA', '¡EXITO!');
+            // return redirect('/ventas');
+            return redirect()->route('ventas.boleta', [$venta->id]);
+        } catch (Exception $e) {
             DB::rollback();
+            Debugbar::addThrowable($e);
         }
-        Toastr::success('LA VENTA FUE REGISTRADA', '¡EXITO!');
-        //return redirect("/ventas");
-        return redirect()->route('ventas.boleta', ['id'=>$venta->id]);
     }
 
     /**

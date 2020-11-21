@@ -45,7 +45,7 @@
                             <td class="project_progress">
                                 <div class="progress progress-sm">
                                     <div class="progress-bar bg-green" role="progressbar" aria-volumenow="57"
-                                        aria-volumemin="0" aria-volumemax="100" style="width: 90%">
+                                        aria-volumemin="0" aria-volumemax="100" style="width: 10%">
                                     </div>
                                 </div><small>90% Complete</small>
                             </td>

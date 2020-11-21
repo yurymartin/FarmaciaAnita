@@ -130,7 +130,7 @@
         </div>
         <div class="col-md-12">
             <!-- AREA CHART -->
-            <div class="card card-primary">
+            <!-- <div class="card card-primary">
                 <div class="card-header">
                     <h3 class="card-title">Grafica de Ventas</h3>
 
@@ -148,9 +148,7 @@
                             style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
                     </div>
                 </div>
-                <!-- /.card-body -->
-            </div>
-            <!-- /.card -->
+            </div> -->
         </div>
     </div>
 </div>
@@ -158,7 +156,7 @@
 <script>
     $(function () {
       var areaChartCanvas = $('#areaChart').get(0).getContext('2d')
-  
+
       var areaChartData = {
         labels  : ['Enero', 'Febrero', 'Marzo', 'April', 'Mayo', 'Junio', 'Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'],
         datasets: [
@@ -175,7 +173,7 @@
           },
         ]
       }
-  
+
       var areaChartOptions = {
         maintainAspectRatio : false,
         responsive : true,
@@ -195,11 +193,11 @@
           }]
         }
       }
-  
+
       // This will get the first returned node in the jQuery collection.
-      var areaChart = new Chart(areaChartCanvas, { 
+      var areaChart = new Chart(areaChartCanvas, {
         type: 'line',
-        data: areaChartData, 
+        data: areaChartData,
         options: areaChartOptions
       })
     })

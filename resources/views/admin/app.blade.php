@@ -374,14 +374,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 Contactanos: 936 695 173
             </div>
             <!-- Default to the left -->
-            <strong>Copyright &copy; 2020 <a href="/">Sistema Farmacia Anita</a> developed by <a
-                    href="https://adminlte.io">Yury Martin</a>|<a href="https://adminlte.io">Dayvid Pachas</a>.</strong>
+            <strong>Copyright &copy; 2020 <a href="/">Sistema Farmacia Anita</a> developed by <a href="https://adminlte.io">Yury Martin</a>.</strong>
             All rights reserved.
         </footer>
     </div>
     <!-- ./wrapper -->
 
-    <!-- REQUIRED SCRIPTS 
+    <!-- REQUIRED SCRIPTS
     <!-- jQuery -->
     <script src="{{ asset('plugins/jquery/jquery.min.js') }}"></script>
     @stack('scripts')

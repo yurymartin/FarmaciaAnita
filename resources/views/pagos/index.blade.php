@@ -5,6 +5,10 @@
 @php
 Toastr::error(" $error ",'¡ERROR!');
 Toastr::clear();
+
+
+
+
 @endphp
 @endforeach
 @endif

@@ -170,7 +170,7 @@
                 <div class="modal-footer" id="guardar">
                     <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal"><i
                             class="far fa-window-close"></i> Cancelar</button>
-                    <button type="submit" class="btn btn-primary swalDefaultSuccess btn-sm"><i class="far fa-save"></i>
+                    <button type="submit" class="btn btn-primary swalDefaultSuccess btn-sm" id="btn_guardar"><i class="far fa-save"></i>
                         Guardar</button>
                 </div>
             </div>
@@ -194,13 +194,13 @@
         $('#bt_add').click(function(){
             agregar();
         });
-        $('#descuento').keypress(function(e){   
-               if(e.which == 13){      
-                agregar();  
-               }   
+        $('#descuento').keypress(function(e){
+               if(e.which == 13){
+                agregar();
+               }
         });
-        /*$('#monto_pagado').keypress(function(e){   
-               if(e.which == 13){      
+        /*$('#monto_pagado').keypress(function(e){
+               if(e.which == 13){
                    monto_pagado=parseFloat($("#monto_pagado").val());
                    deuda=parseFloat($("#total_venta").val());
                 if(monto_pagado!=""){
@@ -211,9 +211,9 @@
                         alert('ES MONTO PAGADO ES MENOR ALA DEUDA');
                     }
                 }
-            }   
+            }
         });*/
-        $('#monto_pagado').keyup(function(){   
+        $('#monto_pagado').keyup(function(){
                    monto_pagado=parseFloat($("#monto_pagado").val());
                    deuda=parseFloat($("#total_venta").val());
                 if(monto_pagado!=""){
@@ -223,8 +223,8 @@
                     }else{
                         $("#vuelto").val('Falta')
                 }
-            }   
-        }); 
+            }
+        });
     });
 
     var cont = 0;
@@ -236,12 +236,13 @@
 
 
     function mostrarValores() {
-        datosProducto = document.getElementById('producto_id').value.split('_');
+        let datosProducto = document.getElementById('producto_id').value.split('_');
         $("#precio_venta").val(datosProducto[2]);
         $("#stock").val(datosProducto[1]);
+        console.log(datosProducto)
     }
 
-    function agregar() 
+    function agregar()
     {
         datosProducto = document.getElementById('producto_id').value.split('_');
         producto_id=datosProducto[0];
@@ -253,7 +254,7 @@
 
 
         if (producto_id!="" && cantidad!="" && cantidad>0 && descuento!="" && precio_venta!="") {
-            if (parseInt(stock)>=parseInt(cantidad)) 
+            if (parseInt(stock)>=parseInt(cantidad))
             {
             subtotal[cont]=(cantidad*precio_venta-descuento);
             total=total+subtotal[cont];
@@ -264,11 +265,11 @@
             $('#total_venta').val(total.toFixed(1));
             $('#total_hidden').val(total);
             evaluar();
-            $('#tabla_venta').append(fila);  
+            $('#tabla_venta').append(fila);
             }else {
                 alert("LA CANTIDAD A VENDER SUPERA EL STOCK");
             }
-                
+
         }else{
             alert("ERROR AL INGRESAR UN PRODUCTO ALA COMPRA");
         }
@@ -292,7 +293,7 @@
         $('#total').html("S/. "+total.toFixed(1));
         $('#total_venta').val(total);
         $('#total_hidden').val(total);
-        $("#fila"+index).remove();  
+        $("#fila"+index).remove();
         evaluar();
     }
 </script>

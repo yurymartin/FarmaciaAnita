@@ -1,5 +1,7 @@
+
 @extends('admin.app')
 @section('content')
+
 <div class="card">
     <div class="card-header">
         <h4 class="card-title">DETALLES DEL TIPO DE PAGO: <b>{{$pago->tipo}}</b></h4>

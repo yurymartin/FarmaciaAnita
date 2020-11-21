@@ -34,8 +34,8 @@ class UserSeeder extends Seeder
 
         DB::table('personas')->insert([
             'dni' => '00000000',
-            'nombres' => 'DAYVID',
-            'apellidos' => 'PACHAS QUENUA',
+            'nombres' => 'YURY',
+            'apellidos' => 'MARTIN CHAUCA',
             'direccion' => 'HUARAZ',
             'genero' => '1'
         ]);
@@ -61,7 +61,7 @@ class UserSeeder extends Seeder
         DB::table('users')->insert([
             'name' => 'admin',
             'email' => 'admin@gmail.com',
-            'password' => bcrypt('admin'), 
+            'password' => bcrypt('admin'),
             'activo' => 1,
             'borrado' => 0,
             'tipouser_id' => 1,
@@ -69,6 +69,6 @@ class UserSeeder extends Seeder
         ]);
 
 
-        
+
     }
 }
